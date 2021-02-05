@@ -1,0 +1,59 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template/shop-homepage)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+  font-family: "Karla", sans-serif;
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+   background-attachment: fixed;
+}
+
+.w4d-card{
+  border-radius: 20px;
+}
+
+.w4d-button{
+  width: 90%;
+  border-radius: 10px;
+}
+
+.recipe-card{
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.main-wrap{
+  width: 100%;
+  height: 95vh;
+  color: white;
+}
+.main-wrap h1{
+  font-size: 10vh;
+}
+
+.main-wrap button{
+  font-size: 2vh;
+  border-radius: 30px;
+}
+
+.new-recipe-card{
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.recipe-wrap{
+  width: 100%;
+  height: 95vh;
+}
+
+#recipe-list{
+  width: 95%;
+  margin: auto;
+}

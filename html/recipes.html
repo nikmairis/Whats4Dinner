@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Whats4Dinner - Recipes</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo-short-stack.png">
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="../js/authHandler.js"></script>
+  <script src="../js/recipeHandler.js"></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="../assets/images/logo-white.png" width="140" height="25" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="main.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="recipes.html" onclick="">Add recipes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="signOut()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="recipe-wrap">
+  <div class="col-lg-12 container text-center mb-4">
+    <div class="card new-recipe-card">
+      <div class="card-body">
+        <h2 class="card-title">New Recipe</h2>
+        <div class="form-group">
+          <label for="title" class="sr-only">Title</label>
+          <input type="text" name="title" id="title" class="form-control" placeholder="Recipe Name">
+        </div>
+        <div class="form-group mb-4">
+          <label for="description" class="sr-only">Description</label>
+          <textarea type="text" name="description" id="description" class="form-control" placeholder="Description" rows="5"></textarea>
+        </div>
+        <div class="form-group mb-4">
+          <label for="kcal" class="sr-only">Kcal</label>
+          <input type="number" name="kcal" id="kcal" class="form-control" placeholder="Kcal">
+        </div>
+        <div class="form-group mb-4">
+          <label for="costs" class="sr-only">Costs</label>
+          <input type="text" name="costs" id="costs" class="form-control" placeholder="Costs $">
+        </div>
+        <button class="btn btn-primary" onclick="createRecipe()">Create Recipe</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4" id="recipe-list">
+
+  </div>
+</div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+  <div class="modal" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="modalText">Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
