@@ -18,7 +18,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="../js/scrambler.min.js"></script>
   <script src="../js/authHandler.js"></script>
-  <script src="../js/diceRoller.js"></script>
+  <script src="../js/infoHandler.js"></script>
 </head>
 
 <body>
@@ -51,14 +51,10 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="row main-wrap" id="mainWrap">
-  <div class="col-lg-10 container align-self-center text-center">
-    <a href="#" id="recipeLink">
-      <h1 class="text-center" id="target">WHATS FOR DINNER?</h1>
-    </a>
-    <button id="rollBtn" class="btn btn-secondary text-center px-4" onclick="rollTheDice()" disabled>Roll the dice</button>
+  <div class="row recipe-wrap">
+    <div class="col-lg-12 container align-self-center text-center mb-4" id="recipe-block">
+    </div>
   </div>
-</div>
     <!--
     <div class="row">
       <div class="col-lg-12">

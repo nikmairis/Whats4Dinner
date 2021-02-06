@@ -10,6 +10,7 @@ firebase.auth().onAuthStateChanged( function(user) {
 });
 
 function rollTheDice(){
+  const recipeLink = document.getElementById("recipeLink");
   const dataRef = firebase.database().ref().child(firebase.auth().currentUser.uid);
   dataRef.once('value', snap => {
     if(recipes.length > 0){
@@ -21,6 +22,7 @@ function rollTheDice(){
         speed: 70,
         text: snap.val()[randId].title
       });
+      recipeLink.href = "info.html?user=" + firebase.auth().currentUser.uid + "&recipeId=" + randId;
     }else{
       Scrambler({
         target: '#target',

@@ -57,3 +57,7 @@ body {
   width: 95%;
   margin: auto;
 }
+
+#mainWrap a{
+  color: white !important;
+}

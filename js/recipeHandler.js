@@ -12,20 +12,47 @@ function createRecipe(){
   const descriptionInput = document.getElementById("description");
   const kcalInput = document.getElementById("kcal");
   const costInput = document.getElementById("costs");
+  const fileButton = document.getElementById("fileButton");
   if(titleInput.value !== "" && descriptionInput.value !== "" && kcalInput.value !== "" && costInput.value !== ""){
     //Creates a database reference for the user
     const dataRef = firebase.database().ref().child(firebase.auth().currentUser.uid);
     dataRef.once('value', snap => {
-      dataRef.push({
-        title: titleInput.value,
-        description: descriptionInput.value,
-        kcal: kcalInput.value,
-        costs: costInput.value
-      });
-      titleInput.value = "";
-      descriptionInput.value = "";
-      kcalInput.value = "";
-      costs.value = "";
+      var currentEntrie = dataRef.push();
+      if(fileButton.value !== ""){
+        var file = fileButton.files[0];
+        var storageRef = firebase.storage().ref('images/' + currentEntrie.key);
+        storageRef.put(file).then(test =>{
+          storageRef.getDownloadURL().then(p => {
+            //const storagePromise = storageRef.getDownloadURL().then(console.log("done"));
+            currentEntrie.set({
+              title: titleInput.value,
+              description: descriptionInput.value,
+              kcal: kcalInput.value,
+              costs: costInput.value,
+              imageUrl: p
+            });
+            titleInput.value = "";
+            descriptionInput.value = "";
+            kcalInput.value = "";
+            costs.value = "";
+            fileButton.value = "";
+          });
+        });
+      }else{
+        currentEntrie.set({
+          title: titleInput.value,
+          description: descriptionInput.value,
+          kcal: kcalInput.value,
+          costs: costInput.value,
+          imageUrl: "http://placehold.it/700x400"
+        });
+        titleInput.value = "";
+        descriptionInput.value = "";
+        kcalInput.value = "";
+        costs.value = "";
+        fileButton.value = "";
+      }
+
     })
   }else{
     $("#modalTitle").text("Error!")
@@ -41,18 +68,19 @@ function childAdded(){
     const recipeList = document.getElementById("recipe-list");
 
     const colDiv = document.createElement("div");
-    colDiv.className = "col-lg-2 mb-4";
+    colDiv.className = "col-md-3 mb-4";
     colDiv.id = "recipe-" + snap.key;
 
     const cardDiv = document.createElement("div");
     cardDiv.className = "card recipe-card h-100";
 
     const imageLink = document.createElement("a");
-    imageLink.href = "#";
+    imageLink.href = "info.html?user=" + uid + "&recipeId=" + snap.key;
 
     const imageEl = document.createElement("img");
     imageEl.className = "card-img-top";
-    imageEl.src = "http://placehold.it/700x400";
+    imageEl.src = recipe.imageUrl;
+    imageEl.style.maxHeight = "400px";
 
     const cardBody = document.createElement("div");
     cardBody.className = "card-body";
